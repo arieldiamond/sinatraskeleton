@@ -4,18 +4,27 @@ get '/' do
 end
 
 post '/login' do
-	if User.authenticate(params[:username], params[:password])
-    @user = User.find_by_username(params[:username])
-    session[:user_id] = @user.id
-    redirect "/user/#{@user.id}"
-  else
-    @error = "Your username or password was incorrect."
-    erb :index
-  end
+	email = params[:email]
+	password = params[:password]
+	if User.authenticate(email, password)
+		user = User.find_by_email(email)
+		session[:user_id] = user.id
+		redirect to '/user/index'
+	else
+		redirect to '/?params_login=Please try again.'
+	end
+
 end
 
 post '/signup' do
 	@user = User.create(params[:user])
+
   redirect to "/" 
+end
+
+get 'logout' do 
+	session.clear
+
+	redirect to '/'
 end
 
