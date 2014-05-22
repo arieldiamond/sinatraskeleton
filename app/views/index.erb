@@ -1,3 +1,16 @@
-<div class="container">
-
+<div class="login">
+<h2>Log In... </h2>
+	<form id="loginform" method="post" action="/login">
+		<p><label>Username: <input type="text" name="user[username]"></label></p>
+		<p><label>Password: <input type="password" name="user[password]"></label></p>
+		<input type="submit" name="login" value="Log In">
+	</form>
+</div>
+<div class="signup">
+<h2>Or Sign Up</h2>
+	<form id="signupform" method="post" action="/signup">
+		<p><label>Username: <input type="text" name="user[username]"></label></p>
+		<p><label>Password: <input type="password" name="user[password]"></label></p>
+		<input type="submit" name="login" value="Log In">
+	</form>
 </div>
